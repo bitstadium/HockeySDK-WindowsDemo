@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="HockeyAppDemo81.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HockeyAppDemo81"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Panel -->
+        <StackPanel Grid.Row="0" Margin="19,0,0,0">
+            <TextBlock Text="HOCKEYAPP" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="HockeyApp Demo" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        </StackPanel>
+        
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+            <ListBox Background="{ThemeResource AppBarBackgroundThemeBrush}" >
+                <ListBoxItem>
+                    <Button Content="AuthorizeWithRedirect" Click="AuthorizeRedirectButton_Click"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                <Button Content="IdentifyWithRedirect" Click="IdentifyRedirectButton_Click"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Button Content="ThrowException" Click="ExceptionButton_Click"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Button Content="ThrowExceptionAgg" Click="AggregateExceptionButton_Click"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Button Content="ThrowExceptionBg" Click="BackgroundExceptionButton_Click"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Button Content="Feedback" Click="FeedbackButton_Click"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Button Content="Logout" Click="LogoutButton_Click"/>
+                </ListBoxItem>
+            </ListBox>
+        </Grid>
+    </Grid>
+</Page>

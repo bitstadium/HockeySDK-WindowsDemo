@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HockeyAppDemo", "HockeyAppDemo\HockeyAppDemo.csproj", "{551E579D-2F6E-47AB-BE5D-E1D448086A2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6B753B52-80A1-4647-BE4A-E6A5A7BC1BD2}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Debug|ARM.ActiveCfg = Debug|ARM
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Debug|ARM.Build.0 = Debug|ARM
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Debug|ARM.Deploy.0 = Debug|ARM
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Debug|x86.ActiveCfg = Debug|x86
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Debug|x86.Build.0 = Debug|x86
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Debug|x86.Deploy.0 = Debug|x86
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Release|ARM.ActiveCfg = Release|ARM
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Release|ARM.Build.0 = Release|ARM
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Release|ARM.Deploy.0 = Release|ARM
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Release|x64.ActiveCfg = Release|Any CPU
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Release|x86.ActiveCfg = Release|x86
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Release|x86.Build.0 = Release|x86
+		{551E579D-2F6E-47AB-BE5D-E1D448086A2D}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
