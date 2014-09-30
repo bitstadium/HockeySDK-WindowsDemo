@@ -1,0 +1,15 @@
+﻿<Window x:Class="HockeyAppDemoWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HockeyApp Demo" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="167*"/>
+            <ColumnDefinition Width="350*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Throw Exception" HorizontalAlignment="Left" Margin="49,98,0,0" VerticalAlignment="Top" Width="108" Click="Button_Click"/>
+        <Button Content="Throw background Exception" HorizontalAlignment="Left" Margin="49,123,0,0" VerticalAlignment="Top" Width="108"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="49,148,0,0" VerticalAlignment="Top" Width="108"/>
+
+    </Grid>
+</Window>
