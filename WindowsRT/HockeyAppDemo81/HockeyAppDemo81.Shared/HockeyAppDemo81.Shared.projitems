@@ -16,7 +16,9 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)DemoConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HockeyAppMetroLogWrapper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IgnoreGit_DemoConstants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)InMemoryLogTarget.cs" />
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\de\HockeyApp.resw" />

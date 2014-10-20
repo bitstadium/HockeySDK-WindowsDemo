@@ -30,6 +30,7 @@
             </StackPanel>
             <StackPanel Grid.Column="2">
                 <Button Content="Feedback" HorizontalAlignment="Left" VerticalAlignment="Top" Click="FeedbackButton_Click"/>
+                <Button Content="Logout" HorizontalAlignment="Left" VerticalAlignment="Top" Click="LogoutButton_Click"/>
             </StackPanel>
         </Grid>
 

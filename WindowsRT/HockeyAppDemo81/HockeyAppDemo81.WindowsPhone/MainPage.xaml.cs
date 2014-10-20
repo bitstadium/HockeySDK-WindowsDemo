@@ -1,4 +1,5 @@
 ﻿using HockeyApp;
+using MetroLog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,15 +18,74 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace HockeyAppDemo81
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        #region HOCKEYAPP SAMPLE CODE
+
+        private ILogger logger = LogManagerFactory.DefaultLogManager.GetLogger<MainPage>();
+
+        private void AuthorizeRedirectButton_Click(object sender, RoutedEventArgs e)
+        {
+            HockeyClient.Current.AuthorizeUser(typeof(Authorized), eMail: DemoConstants.USER_EMAIL);
+        }
+
+        private void IdentifyRedirectButton_Click(object sender, RoutedEventArgs e)
+        {
+            HockeyClient.Current.IdentifyUser(DemoConstants.YOUR_APP_SECRET, typeof(Identified));
+        }
+
+        private void ExceptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            logger.Error("Some imporant thing to log");
+            throw new Exception("TestException from DemoApp");
+        }
+
+        private void AggregateExceptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            var aggr = new AggregateException("AggregateExceptionFromDemoApp", new ArgumentException("TestArgumentException from DemoApp"), new InvalidOperationException("InvalidOperationException from DemoApp"));
+            throw aggr;
+        }
+
+        private async void BackgroundExceptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            ThrowUncaughtBackgroundException();
+            await new MessageDialog("Uncaught background exception has been thrown.").ShowAsync();
+        }
+
+        private async void ThrowUncaughtBackgroundException()
+        {
+            var task = Task<bool>.Run(() => { throw new InvalidOperationException("BackgroundException"); return false; });
+            //var x = await task;
+        }
+
+        private void FeedbackButton_Click(object sender, RoutedEventArgs e)
+        {
+            HockeyClient.Current.ShowFeedback(DemoConstants.USER_NAME, DemoConstants.USER_EMAIL);
+        }
+
+        private async void CheckUpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            await HockeyClient.Current.CheckForAppUpdateAsync(new UpdateCheckSettings()
+            {
+                UpdateMode = UpdateMode.InApp
+            });
+        }
+
+        private async void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            await HockeyClient.Current.LogoutUserAsync();
+            await HockeyClient.Current.LogoutFromFeedbackAsync();
+        }
+
+        #endregion
+
+        #region Standard template code
+
         public static MainPage Current;
 
         public MainPage()
@@ -58,50 +118,6 @@ namespace HockeyAppDemo81
             // this event is handled for you.
         }
 
-        private void AuthorizeRedirectButton_Click(object sender, RoutedEventArgs e)
-        {
-            HockeyClient.Current.AuthorizeUser(typeof(Authorized), eMail: DemoConstants.USER_EMAIL);
-        }
-
-        private void IdentifyRedirectButton_Click(object sender, RoutedEventArgs e)
-        {
-            //sample 
-            HockeyClient.Current.IdentifyUser(DemoConstants.YOUR_APP_SECRET, typeof(Identified));
-            //demo HockeyClient.Current.IdentifyUser("ae93934ac5664cfd6745d4ae997d0fe8", typeof(Identified));
-        }
-
-        private void ExceptionButton_Click(object sender, RoutedEventArgs e)
-        {
-            throw new Exception("TestException from DemoApp");
-        }
-
-        private void AggregateExceptionButton_Click(object sender, RoutedEventArgs e)
-        {
-            var aggr = new AggregateException("AggregateExceptionFromDemoApp", new ArgumentException("TestArgumentException from DemoApp"), new InvalidOperationException("InvalidOperationException from DemoApp"));
-            throw aggr;
-        }
-
-        private async void BackgroundExceptionButton_Click(object sender, RoutedEventArgs e)
-        {
-            ThrowUncaughtBackgroundException();
-            await new MessageDialog("Uncaught background exception has been thrown.").ShowAsync();
-        }
-
-        private async void ThrowUncaughtBackgroundException()
-        {
-            var task = Task<bool>.Run(() => { throw new InvalidOperationException("BackgroundException"); return false; });
-            var x = await task;
-        }
-
-        private void FeedbackButton_Click(object sender, RoutedEventArgs e)
-        {
-            HockeyClient.Current.ShowFeedback(DemoConstants.USER_NAME, DemoConstants.USER_EMAIL);
-        }
-
-        private async void LogoutButton_Click(object sender, RoutedEventArgs e)
-        {
-            await HockeyClient.Current.LogoutUserAsync();
-            await HockeyClient.Current.LogoutFromFeedbackAsync();
-        }
+        #endregion
     }
 }

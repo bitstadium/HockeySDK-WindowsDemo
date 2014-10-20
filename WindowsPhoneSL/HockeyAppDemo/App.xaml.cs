@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Diagnostics;
 using System.Resources;
 using System.Windows;
@@ -9,6 +10,7 @@ using Microsoft.Phone.Shell;
 using HockeyAppDemo.Resources;
 using HockeyApp;
 using System.IO.IsolatedStorage;
+using MetroLog;
 
 namespace HockeyAppDemo
 {
@@ -57,23 +59,51 @@ namespace HockeyAppDemo
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
-            Func<Exception,string> descLoader = (exc) => {
-                IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
-                    return settings["myKey"] as string;  
-            };
 
+            #region HOCKEYAPP SAMPLE CODE
+
+            //this is just a sample in memory logger using MetroLog
+            var config = new LoggingConfiguration();
+            var inMemoryLogTarget = new InMemoryLogTarget(40);
+            config.AddTarget(LogLevel.Warn, inMemoryLogTarget);
+            LogManagerFactory.DefaultConfiguration = config;
+
+            //main configuration method for HockeySDK. following lines are optional configurations options
             HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID)
-                .SetExceptionDescriptionLoader(descLoader)
-                .UseCustomResourceManager(AppResources.ResourceManager);
+                .SetExceptionDescriptionLoader((ex) => { return inMemoryLogTarget.LogLines.Aggregate((a, b) => a + "\n" + b); }) //return additional info from your logger on crash
+                // .SetApiDomain("https://your.dedicated.hockey.server")
+                .UseCustomResourceManager(AppResources.ResourceManager)
+                .SetContactInfo(DemoConstants.USER_NAME, DemoConstants.USER_EMAIL);
+
+            //optional register your logger for internal logging of HockeySDK
+            HockeyLogManager.GetLog = (t) => { return new HockeyAppMetroLogWrapper(t); };
+
+            //optional should only used in debug builds. register an event-handler to get exceptions in HockeySDK code that are "swallowed" (like problems writing crashlogs etc.)
+#if DEBUG
+            ((HockeyClient)HockeyClient.Current).OnHockeySDKInternalException += (sender, args) =>
+            {
+                if (Debugger.IsAttached)
+                {
+                    Debugger.Break();
+                }
+            };
+#endif
+            #endregion
         }
 
         // Code to execute when the application is launching (eg, from Start)
         // This code will not execute when the application is reactivated
         private async void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            await HockeyClient.Current.HandleCrashesAsync();
+            #region HOCKEYAPP SAMPLE CODE
+            //send logged crashes to the HockeyApp server
+            await HockeyClient.Current.SendCrashesAsync(/* sendWithoutAsking: true */);
+            //Start UpdateChecker with default options
             HockeyClient.Current.CheckForUpdates();
+            #endregion
         }
+
+        #region Standard template code
 
         // Code to execute when the application is activated (brought to foreground)
         // This code will not execute when the application is first launched
@@ -233,5 +263,7 @@ namespace HockeyAppDemo
                 throw;
             }
         }
+
+        #endregion
     }
 }

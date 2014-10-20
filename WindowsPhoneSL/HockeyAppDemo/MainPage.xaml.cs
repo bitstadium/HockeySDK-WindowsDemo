@@ -11,12 +11,15 @@ using HockeyAppDemo.Resources;
 using HockeyApp;
 using System.Threading.Tasks;
 using System.IO.IsolatedStorage;
+using MetroLog;
 
 namespace HockeyAppDemo
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        // Constructor
+
+        private ILogger logger = LogManagerFactory.DefaultLogManager.GetLogger<MainPage>();
+        
         public MainPage()
         {
             InitializeComponent();
@@ -52,6 +55,7 @@ namespace HockeyAppDemo
 
         private void ExceptionButton_Click(object sender, RoutedEventArgs e)
         {
+            logger.Warn("This information was logged");
             throw new Exception("TestException from DemoApp");
         }
 

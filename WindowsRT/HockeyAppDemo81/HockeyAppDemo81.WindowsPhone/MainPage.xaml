@@ -8,6 +8,19 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="{ThemeResource TextStyleExtraLargeFontSize}"/>
+                <Setter Property="FontWeight" Value="Light"/>
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="-10,-5" />
+                <Setter Property="MinWidth" Value="0"/>
+            </Style>
+        </ResourceDictionary>
+    </Page.Resources>
+    
     <Grid x:Name="LayoutRoot">
 
         <Grid.ChildrenTransitions>
@@ -30,10 +43,10 @@
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
             <ListBox Background="{ThemeResource AppBarBackgroundThemeBrush}" >
                 <ListBoxItem>
-                    <Button Content="AuthorizeWithRedirect" Click="AuthorizeRedirectButton_Click"/>
+                    <Button Content="Authorize" Click="AuthorizeRedirectButton_Click"/>
                 </ListBoxItem>
                 <ListBoxItem>
-                <Button Content="IdentifyWithRedirect" Click="IdentifyRedirectButton_Click"/>
+                    <Button Content="Identify" Click="IdentifyRedirectButton_Click"/>
                 </ListBoxItem>
                 <ListBoxItem>
                     <Button Content="ThrowException" Click="ExceptionButton_Click"/>
@@ -43,6 +56,9 @@
                 </ListBoxItem>
                 <ListBoxItem>
                     <Button Content="ThrowExceptionBg" Click="BackgroundExceptionButton_Click"/>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <Button Content="Check for update" Click="CheckUpdateButton_Click"/>
                 </ListBoxItem>
                 <ListBoxItem>
                     <Button Content="Feedback" Click="FeedbackButton_Click"/>

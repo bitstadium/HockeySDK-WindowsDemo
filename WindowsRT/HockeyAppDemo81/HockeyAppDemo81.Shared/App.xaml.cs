@@ -1,7 +1,9 @@
 ﻿using HockeyApp;
 using HockeyApp.Common;
+using MetroLog;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -10,6 +12,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,47 +31,93 @@ namespace HockeyAppDemo81
     /// </summary>
     public sealed partial class App : Application
     {
-#if WINDOWS_PHONE_APP
-        private TransitionCollection transitions;
-#endif
 
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
         public App()
         {
-            HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID);
 
+            #region HOCKEYAPP SAMPLE CODE
+
+            //this is just a sample in memory logger using MetroLog
+            var config = new LoggingConfiguration();
+            var inMemoryLogTarget = new InMemoryLogTarget(40);
+            config.AddTarget(LogLevel.Warn, inMemoryLogTarget);
+            LogManagerFactory.DefaultConfiguration = config;
+
+            //main configuration method for HockeySDK. following lines are optional configurations options
+            HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID)
+                .SetExceptionDescriptionLoader((ex) => { return inMemoryLogTarget.LogLines.Aggregate((a, b) => a + "\n" + b); }) //return additional info from your logger on crash
+                // .RegisterCustomUnhandledExceptionLogic((eArgs) => { return true; }) // define a callback that is called after unhandled exception. returnvalue indicates if application exit should be called
+                // .RegisterCustomUnobserveredTaskExceptionLogic((eArgs) => { return false; }) // define a callback that is called after unobserved task exception. returnvalue indicates if application exit should be called
+                // .SetApiDomain("https://your.dedicated.hockey.server")
+                .SetContactInfo(DemoConstants.USER_NAME, DemoConstants.USER_EMAIL);
+
+            //optional register your logger for internal logging of HockeySDK
+            HockeyLogManager.GetLog = (t) => { return new HockeyAppMetroLogWrapper(t); };
+
+            //optional should only used in debug builds. register an event-handler to get exceptions in HockeySDK code that are "swallowed" (like problems writing crashlogs etc.)
+#if DEBUG
+            ((HockeyClient)HockeyClient.Current).OnHockeySDKInternalException += (sender, args) => {
+                if (Debugger.IsAttached)
+                {
+                    //Debugger.Break();
+                }
+            };
+#endif
+            #endregion
+
+            #region Standard template code 
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+            #endregion
         }
 
-        /// <summary>
-        /// Invoked when the application is launched normally by the end user.  Other entry points
-        /// will be used such as when the application is launched to open a specific file.
-        /// </summary>
-        /// <param name="e">Details about the launch request and process.</param>
         protected async override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            #region Standard template code
             Frame rootFrame = CreateRootFrame();
 
 #if WINDOWS_PHONE_APP
             await RestoreStatusAsync(e.PreviousExecutionState);
 #endif
-
-            //MainPage is always in rootFrame so we don't have to worry about restoring the navigation state on resume
-            //rootFrame.Navigate(typeof(MainPage), e.Arguments);
-            HockeyClient.Current.IdentifyUser(DemoConstants.YOUR_APP_SECRET, typeof(MainPage));
-
             // Ensure the current window is active
             Window.Current.Activate();
+            #endregion
 
-            await HockeyClient.Current.SendCrashesAsync();
+            #region HOCKEYAPP SAMPLE CODE
+
+            //checks for existing crashlogs and sends them to the server (asking user with a dialog if not sendWithoutAsking)
+            await HockeyClient.Current.SendCrashesAsync(/* sendWithoutAsking: true */);
+
+            //initiate hockeyapp authentifictation 
+            HockeyClient.Current.IdentifyUser(DemoConstants.YOUR_APP_SECRET, 
+                typeof(MainPage), 
+                //tokenValidationPolicy: TokenValidationPolicy.OnNewVersion,
+                authValidationMode: AuthValidationMode.Graceful
+                );
+
+            //following line commented out because we want to go to the main page only after successfull authentication
+            //rootFrame.Navigate(typeof(MainPage), e.Arguments);
+            #endregion
+
+
+            #region HOCKEYAPP SAMPLE CODE
+
+            //Updater is only available on Windows Phone because of sideloading-restrictions on Windows 8.1
 #if WINDOWS_PHONE_APP
-      await HockeyClient.Current.CheckForAppUpdateAsync();      
+            //initiates a call to the hockeyapp server (if network is available) and shows a dialog to the user if an update is available
+            //should be called after SendCrashesAsync (if not auto-send) to avoid multiple dialogs!
+            await HockeyClient.Current.CheckForAppUpdateAsync();
 #endif
+            #endregion
+
         }
+
+        #region Code from visual studio standard template
+
+#if WINDOWS_PHONE_APP
+        private TransitionCollection transitions;
+#endif
+
 
         private Frame CreateRootFrame()
         {
@@ -106,8 +155,6 @@ namespace HockeyAppDemo81
             var rootFrame = sender as Frame;
             rootFrame.ContentTransitions = this.transitions ?? new TransitionCollection() { new NavigationThemeTransition() };
             rootFrame.Navigated -= this.RootFrame_FirstNavigated;
-
-            
         }
 
 
@@ -180,5 +227,8 @@ namespace HockeyAppDemo81
             
             deferral.Complete();
         }
+
+        #endregion
+
     }
 }

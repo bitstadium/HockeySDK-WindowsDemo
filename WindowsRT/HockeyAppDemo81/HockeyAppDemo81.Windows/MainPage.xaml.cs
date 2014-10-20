@@ -1,4 +1,5 @@
 ﻿using HockeyApp;
+using MetroLog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,15 +17,13 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
-
 namespace HockeyAppDemo81
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
+
+        private ILogger logger = LogManagerFactory.DefaultLogManager.GetLogger<MainPage>();
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -37,7 +36,7 @@ namespace HockeyAppDemo81
 
         private void IdentifyRedirectButton_Click(object sender, RoutedEventArgs e)
         {
-            HockeyClient.Current.IdentifyUser("ae93934ac5664cfd6745d4ae997d0fe8", typeof(Authorized));
+            HockeyClient.Current.IdentifyUser(DemoConstants.YOUR_APP_SECRET, typeof(Authorized));
         }
 
         private void AuthorizeActionButton_Click(object sender, RoutedEventArgs e)
@@ -48,6 +47,7 @@ namespace HockeyAppDemo81
 
         private void ExceptionButton_Click(object sender, RoutedEventArgs e)
         {
+            logger.Warn("Some logged information.");
             throw new Exception("TestException from DemoApp");
         }
 
@@ -61,13 +61,12 @@ namespace HockeyAppDemo81
         {
             ThrowUncaughtBackgroundException();
             new MessageDialog("Uncaught background exception has been thrown.").ShowAsync();
-            GC.Collect();
         }
 
         private async void ThrowUncaughtBackgroundException()
         {
             var task = Task<bool>.Run(() => { throw new InvalidOperationException("BackgroundException"); return false; });
-            var x = await task;
+            //var x = await task;
         }
 
         private void FeedbackButton_Click(object sender, RoutedEventArgs e)
@@ -75,5 +74,10 @@ namespace HockeyAppDemo81
             HockeyClient.Current.ShowFeedback(DemoConstants.USER_NAME, DemoConstants.USER_EMAIL);
         }
 
+        private async void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            await HockeyClient.Current.LogoutUserAsync();
+            HockeyClient.Current.LogoutFromFeedback();
+        }
     }
 }
