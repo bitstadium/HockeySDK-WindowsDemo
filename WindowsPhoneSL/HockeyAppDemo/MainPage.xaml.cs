@@ -8,7 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using HockeyAppDemo.Resources;
-using HockeyApp;
+using Microsoft.HockeyApp;
 using System.Threading.Tasks;
 using System.IO.IsolatedStorage;
 using MetroLog;

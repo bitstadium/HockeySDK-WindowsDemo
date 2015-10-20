@@ -109,7 +109,6 @@
     <Compile Include="Identified.xaml.cs">
       <DependentUpon>Identified.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IgnoreGit_DemoConstants.cs" />
     <Compile Include="InMemoryLogTarget.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -144,7 +143,6 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="HockeyAppContent\Thumbs.db" />
     <None Include="packages.config" />
     <None Include="Properties\AppManifest.xml">
       <SubType>Designer</SubType>
@@ -194,19 +192,43 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="HockeyApp, Version=2.2.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HockeySDK.WP.2.2.0-beta5\lib\wp8\HockeyApp.dll</HintPath>
-    </Reference>
-    <Reference Include="HockeyAppPCL, Version=2.2.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HockeySDK.Core.2.2.0-beta5\lib\portable-net45+win8+wp8+wpa81+win81\HockeyAppPCL.dll</HintPath>
-    </Reference>
     <Reference Include="MetroLog">
       <HintPath>..\packages\MetroLog.0.8.6.1\lib\wp8\MetroLog.dll</HintPath>
     </Reference>
     <Reference Include="MetroLog.Platform">
       <HintPath>..\packages\MetroLog.0.8.6.1\lib\wp8\MetroLog.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.HockeyApp, Version=3.0.0.27265, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.WP.3.0.0-build27265\lib\wp8\Microsoft.HockeyApp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.HockeyApp.Extensibility, Version=3.0.0.27265, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.WP.3.0.0-build27265\lib\wp8\Microsoft.HockeyApp.Extensibility.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.HockeyApp.Kit, Version=3.0.0.27265, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.WP.3.0.0-build27265\lib\wp8\Microsoft.HockeyApp.Kit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.HockeyApp.PersistenceChannel, Version=3.0.0.27265, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.WP.3.0.0-build27265\lib\wp8\Microsoft.HockeyApp.PersistenceChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.HockeyAppPCL, Version=3.0.0.27265, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.Core.3.0.0-build27265\lib\portable-net45+win8+wp8+wpa81+win81\Microsoft.HockeyAppPCL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Phone, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\wp8\Microsoft.Threading.Tasks.Extensions.Phone.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.IO.Compression">
       <HintPath>..\packages\Microsoft.Bcl.Compression.3.9.73\lib\wp8\System.IO.Compression.dll</HintPath>
