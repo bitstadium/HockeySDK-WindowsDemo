@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using HockeyApp;
+using Microsoft.HockeyApp;
 using System.Diagnostics;
 
 namespace HockeyAppDemoWPF

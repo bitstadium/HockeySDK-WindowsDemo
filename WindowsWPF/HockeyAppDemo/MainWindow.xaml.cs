@@ -1,4 +1,4 @@
-﻿using HockeyApp;
+﻿using Microsoft.HockeyApp;
 using System;
 using System.Collections.Generic;
 using System.Linq;

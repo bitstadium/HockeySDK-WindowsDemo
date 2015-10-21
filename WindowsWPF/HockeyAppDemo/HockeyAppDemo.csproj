@@ -34,13 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HockeyApp, Version=2.2.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HockeySDK.WPF.2.2.0-beta5\lib\net45\HockeyApp.dll</HintPath>
+    <Reference Include="Microsoft.HockeyApp, Version=3.0.0.27769, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.WPF.3.0.0-build27769\lib\net45\Microsoft.HockeyApp.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="HockeyAppPCL, Version=2.2.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\HockeySDK.Core.2.2.0-beta5\lib\portable-net45+win8+wp8+wpa81+win81\HockeyAppPCL.dll</HintPath>
+    <Reference Include="Microsoft.HockeyApp.Kit, Version=3.0.0.27769, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.WPF.3.0.0-build27769\lib\net45\Microsoft.HockeyApp.Kit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.HockeyAppPCL, Version=3.0.0.27769, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.Core.3.0.0-build27769\lib\portable-net45+win8+wp8+wpa81+win81\Microsoft.HockeyAppPCL.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -75,7 +79,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HockeyApp.resx</DependentUpon>
     </Compile>
-    <Compile Include="IgnoreGit_DemoConstants.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
