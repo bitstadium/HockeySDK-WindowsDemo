@@ -10,7 +10,6 @@
 //*********************************************************
 
 using System;
-using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -31,6 +30,7 @@ namespace HockeyAppDemo
         /// </summary>
         public App()
         {
+            Microsoft.HockeyApp.HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID);
             this.InitializeComponent();
             this.Construct();
         }
