@@ -30,7 +30,17 @@ namespace HockeyAppDemo
         /// </summary>
         public App()
         {
-            Microsoft.HockeyApp.HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID);
+            Microsoft.HockeyApp.HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID,
+                new Microsoft.HockeyApp.TelemetryConfiguration()
+                {
+                    // DescriptionLoader callback allows user to provide additional exception related in the context of a crash.
+                    // In this case we are adding exception HResult
+                    DescriptionLoader = (Exception ex) => 
+                    {
+                        return "Exception HResult: " + ex.HResult.ToString();
+                    }
+                });
+
             this.InitializeComponent();
             this.Construct();
         }
