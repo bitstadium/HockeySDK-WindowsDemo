@@ -1,4 +1,4 @@
-﻿using Microsoft.HockeyApp;
+﻿using HockeyApp;
 using MetroLog;
 using System;
 using System.Collections.Generic;

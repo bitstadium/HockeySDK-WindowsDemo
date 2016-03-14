@@ -129,31 +129,19 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="HockeyApp, Version=2.2.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\HockeySDK.WINRT.2.2.0-beta5\lib\portable-wpa81\HockeyApp.dll</HintPath>
+    </Reference>
+    <Reference Include="HockeyAppPCL, Version=2.2.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\HockeySDK.Core.2.2.0-beta5\lib\portable-net45+win8+wp8+wpa81+win81\HockeyAppPCL.dll</HintPath>
+    </Reference>
     <Reference Include="MetroLog">
       <HintPath>..\..\packages\MetroLog.0.8.6.1\lib\wpa81\MetroLog.dll</HintPath>
     </Reference>
     <Reference Include="MetroLog.Platform">
       <HintPath>..\..\packages\MetroLog.0.8.6.1\lib\wpa81\MetroLog.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.HockeyApp, Version=3.0.0.27563, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\HockeySDK.WINRT.3.0.0-build27563\lib\portable-wpa81\Microsoft.HockeyApp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.HockeyApp.Extensibility, Version=3.0.0.27563, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\HockeySDK.WINRT.3.0.0-build27563\lib\portable-wpa81\Microsoft.HockeyApp.Extensibility.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.HockeyApp.Kit, Version=3.0.0.27563, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\HockeySDK.WINRT.3.0.0-build27563\lib\portable-wpa81\Microsoft.HockeyApp.Kit.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.HockeyApp.PersistenceChannel, Version=3.0.0.27563, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\HockeySDK.WINRT.3.0.0-build27563\lib\portable-wpa81\Microsoft.HockeyApp.PersistenceChannel.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.HockeyAppPCL, Version=3.0.0.27563, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\HockeySDK.Core.3.0.0-build27563\lib\portable-net45+win8+wp8+wpa81+win81\Microsoft.HockeyAppPCL.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
