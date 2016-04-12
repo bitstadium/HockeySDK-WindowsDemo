@@ -62,8 +62,17 @@ namespace HockeyAppDemoWPF
             //var x = await task;
         }
 
-
-
-
+        private void HandleHandledException_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                throw new InvalidOperationException("Something bad happened here");
+            }
+            catch (Exception ex)
+            {
+                (HockeyClient.Current as HockeyClient).HandleException(ex);
+                // Environment.Exit(-1);
+            }
+        }
     }
 }
