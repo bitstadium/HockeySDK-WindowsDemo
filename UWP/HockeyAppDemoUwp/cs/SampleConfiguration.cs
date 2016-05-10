@@ -21,7 +21,7 @@ namespace HockeyAppDemo
 
         List<Scenario> scenarios = new List<Scenario>
         {
-            new Scenario() { Title = "Crashes", ClassType = typeof(Scenario1_Crashes) },
+            new Scenario() { Title = "API Demo", ClassType = typeof(Scenario1_Crashes) },
         };
     }
 

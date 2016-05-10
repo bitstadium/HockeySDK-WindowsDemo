@@ -1,5 +1,4 @@
-﻿using HockeyApp;
-using MetroLog;
+﻿using MetroLog;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.HockeyApp;
 
 
 namespace HockeyAppDemo81

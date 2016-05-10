@@ -28,5 +28,10 @@ namespace HockeyAppDemo
         {
             throw new Exception("TestException from DemoApp");
         }
+
+        private void TrackEventButton_Click()
+        {
+            Microsoft.HockeyApp.HockeyClient.Current.TrackEvent("Button Clicked");
+        }
     }
 }
