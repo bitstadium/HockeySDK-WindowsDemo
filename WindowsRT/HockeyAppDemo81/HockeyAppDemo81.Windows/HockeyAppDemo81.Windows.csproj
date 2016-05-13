@@ -144,14 +144,6 @@
     <Folder Include="Assets\HockeyApp\" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="HockeyApp, Version=2.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\HockeySDK.WINRT.2.2.3\lib\portable-win81\HockeyApp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="HockeyAppPCL, Version=2.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\HockeySDK.Core.2.2.3\lib\portable-net45+win8+wp8+wpa81+win81\HockeyAppPCL.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="MetroLog">
       <HintPath>..\..\packages\MetroLog.0.8.6.1\lib\netcore45\MetroLog.dll</HintPath>
     </Reference>
@@ -160,6 +152,14 @@
     </Reference>
     <Reference Include="MetroLog.WinRT">
       <HintPath>..\..\packages\MetroLog.0.8.6.1\lib\netcore45\MetroLog.WinRT.winmd</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.HockeyApp.Core45, Version=4.1.0.26603, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HockeySDK.Core.4.1.0-build26603\lib\portable-net45+win8+wp8+wpa81+win81\Microsoft.HockeyApp.Core45.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.HockeyApp.Kit, Version=4.1.0.26603, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\HockeySDK.WINRT.4.1.0-build26603\lib\portable-win81\Microsoft.HockeyApp.Kit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
