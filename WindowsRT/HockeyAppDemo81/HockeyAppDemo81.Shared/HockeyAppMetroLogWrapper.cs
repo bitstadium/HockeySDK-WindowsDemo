@@ -1,4 +1,4 @@
-﻿using Microsoft.HockeyApp;
+﻿using HockeyApp;
 using MetroLog;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HockeyAppDemo81
 {
-    public class HockeyAppMetroLogWrapper : Microsoft.HockeyApp.ILog
+    public class HockeyAppMetroLogWrapper : ILog
     {
         private ILogger Logger;
         private readonly Type _type;

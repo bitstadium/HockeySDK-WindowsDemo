@@ -1,5 +1,5 @@
-﻿using Microsoft.HockeyApp;
-using Microsoft.HockeyApp.Common;
+﻿using HockeyApp;
+using HockeyApp.Common;
 using MetroLog;
 using System;
 using System.Collections.Generic;
