@@ -119,5 +119,10 @@ namespace HockeyAppDemo81
         }
 
         #endregion
+
+        private void TrackEvent_Click(object sender, RoutedEventArgs e)
+        {
+            HockeyClient.Current.TrackEvent("Button clicked");
+        }
     }
 }

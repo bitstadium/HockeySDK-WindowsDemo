@@ -58,6 +58,9 @@
                     <Button Content="ThrowExceptionBg" Click="BackgroundExceptionButton_Click"/>
                 </ListBoxItem>
                 <ListBoxItem>
+                    <Button Content="Track Event" Click="TrackEvent_Click"/>
+                </ListBoxItem>
+                <ListBoxItem>
                     <Button Content="Check for update" Click="CheckUpdateButton_Click"/>
                 </ListBoxItem>
                 <ListBoxItem>

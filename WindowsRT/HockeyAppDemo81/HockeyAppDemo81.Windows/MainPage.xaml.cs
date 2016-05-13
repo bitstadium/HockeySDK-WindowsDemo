@@ -79,5 +79,10 @@ namespace HockeyAppDemo81
             await HockeyClient.Current.LogoutUserAsync();
             HockeyClient.Current.LogoutFromFeedback();
         }
+
+        private void TrackEvent_Click(object sender, RoutedEventArgs e)
+        {
+            HockeyClient.Current.TrackEvent("Button Clicked");
+        }
     }
 }

@@ -13,6 +13,7 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
                 <ColumnDefinition />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
         
         <StackPanel Grid.Column="0">
@@ -31,6 +32,9 @@
             <StackPanel Grid.Column="2">
                 <Button Content="Feedback" HorizontalAlignment="Left" VerticalAlignment="Top" Click="FeedbackButton_Click"/>
                 <Button Content="Logout" HorizontalAlignment="Left" VerticalAlignment="Top" Click="LogoutButton_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Column="3">
+                <Button Content="Track Event" HorizontalAlignment="Left" VerticalAlignment="Top" Click="TrackEvent_Click"/>
             </StackPanel>
         </Grid>
 
