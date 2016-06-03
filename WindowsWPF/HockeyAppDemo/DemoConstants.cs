@@ -1,5 +1,4 @@
-﻿/*
-namespace HockeyAppDemoWPF
+﻿namespace HockeyAppDemoWPF
 {
     public partial class DemoConstants
     {
@@ -12,4 +11,3 @@ namespace HockeyAppDemoWPF
         public static string USER_NAME = "John Smith";
     }
 }
-*/
