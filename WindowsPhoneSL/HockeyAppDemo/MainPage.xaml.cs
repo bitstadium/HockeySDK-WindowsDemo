@@ -8,7 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using HockeyAppDemo.Resources;
-using HockeyApp;
+using Microsoft.HockeyApp;
 using System.Threading.Tasks;
 using System.IO.IsolatedStorage;
 using MetroLog;
@@ -76,6 +76,11 @@ namespace HockeyAppDemo
         {
             var task = Task<bool>.Run(() => { throw new InvalidOperationException("BackgroundException"); return false; });
             var x = await task;
+        }
+
+        private void CustomEvent_Click(object sender, RoutedEventArgs e)
+        {
+            HockeyClient.Current.TrackEvent("CustomEvent_Click");
         }
 
         // Sample code for building a localized ApplicationBar

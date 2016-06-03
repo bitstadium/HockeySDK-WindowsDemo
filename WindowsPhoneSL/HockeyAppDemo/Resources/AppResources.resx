@@ -164,4 +164,7 @@
   <data name="xyz" xml:space="preserve">
     <value>sdf</value>
   </data>
+  <data name="CustomEvent" xml:space="preserve">
+    <value>Custom Event</value>
+  </data>
 </root>
