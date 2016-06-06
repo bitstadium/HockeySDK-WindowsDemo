@@ -59,7 +59,9 @@ namespace HockeyAppDemo81
         private async void ThrowUncaughtBackgroundException()
         {
             var task = Task<bool>.Run(() => { throw new InvalidOperationException("BackgroundException"); return false; });
-            //var x = await task;
+
+            // await for a task, otherwise the global exception handler Application.UnhandledException is not invoked.
+            var x = await task;
         }
 
         private void FeedbackButton_Click(object sender, RoutedEventArgs e)
