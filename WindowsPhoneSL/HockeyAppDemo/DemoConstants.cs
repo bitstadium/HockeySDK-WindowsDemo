@@ -1,4 +1,5 @@
-﻿namespace HockeyAppDemo
+﻿/*
+namespace HockeyAppDemo
 {
     public partial class DemoConstants
     {
@@ -12,3 +13,4 @@
         public static string USER_NAME = "John Smith";
     }
 }
+*/
