@@ -53,6 +53,7 @@ namespace HockeyAppDemo
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            BackgroundServices.MyBackgroundTask.Register();
 
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
