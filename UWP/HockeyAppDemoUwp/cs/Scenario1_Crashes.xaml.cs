@@ -83,7 +83,14 @@ namespace HockeyAppDemo
 
         private void TrackExceptionButton_Click()
         {
-            HockeyClient.Current.TrackException(new ArgumentException("This is test handled exception!"));
+            try
+            {
+                MethodA(false);
+            }
+            catch (Exception ex)
+            {
+                HockeyClient.Current.TrackException(ex);
+            }
         }
 
         private void TrackUnobservedTaskException()
@@ -104,23 +111,27 @@ namespace HockeyAppDemo
 
         private void TrackExceptionWithSpanishLanguage_Click()
         {
-            MethodA();
+            MethodA(true);
         }
 
-        private void MethodA()
+        private void MethodA(bool useSpanishCulture)
         {
-            MethodB();
+            MethodB(useSpanishCulture);
         }
 
-        private void MethodB()
+        private void MethodB(bool useSpanishCulture)
         {
-            MethodC();
+            MethodC(useSpanishCulture);
         }
 
-        private void MethodC()
+        private void MethodC(bool useSpanishCulture)
         {
-            CultureInfo.CurrentUICulture = new CultureInfo("es-ES");
-            CultureInfo.CurrentCulture = new CultureInfo("es-ES");
+            if (useSpanishCulture)
+            {
+                CultureInfo.CurrentUICulture = new CultureInfo("es-ES");
+                CultureInfo.CurrentCulture = new CultureInfo("es-ES");
+            }
+
             throw new ArgumentException("Hello from Spain!");
         }
     }
