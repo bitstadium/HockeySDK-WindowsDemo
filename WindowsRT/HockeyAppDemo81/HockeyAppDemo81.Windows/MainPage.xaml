@@ -35,6 +35,11 @@
             </StackPanel>
             <StackPanel Grid.Column="3">
                 <Button Content="Track Event" HorizontalAlignment="Left" VerticalAlignment="Top" Click="TrackEvent_Click"/>
+                <Button Content="Track Metric" HorizontalAlignment="Left" VerticalAlignment="Top" Click="TrackMetric_Click"/>
+                <Button Content="Track Trace" HorizontalAlignment="Left" VerticalAlignment="Top" Click="TrackTrace_Click"/>
+                <Button Content="Track PageView" HorizontalAlignment="Left" VerticalAlignment="Top" Click="TrackPageView_Click"/>
+                <Button Content="Track Dependency" HorizontalAlignment="Left" VerticalAlignment="Top" Click="TrackDependency_Click"/>
+                <Button Content="Track Exception" HorizontalAlignment="Left" VerticalAlignment="Top" Click="TrackException_Click"/>
             </StackPanel>
         </Grid>
 

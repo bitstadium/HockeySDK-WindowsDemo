@@ -89,11 +89,11 @@ namespace HockeyAppDemo81
             await HockeyClient.Current.SendCrashesAsync(/* sendWithoutAsking: true */);
 
             //initiate hockeyapp authentifictation 
-            HockeyClient.Current.IdentifyUser(DemoConstants.YOUR_APP_SECRET, 
-                typeof(MainPage), 
-                //tokenValidationPolicy: TokenValidationPolicy.OnNewVersion,
-                authValidationMode: AuthValidationMode.Graceful
-                );
+            //HockeyClient.Current.IdentifyUser(DemoConstants.YOUR_APP_SECRET, 
+            //    typeof(MainPage), 
+            //    //tokenValidationPolicy: TokenValidationPolicy.OnNewVersion,
+            //    authValidationMode: AuthValidationMode.Graceful
+            //    );
 
             //following line commented out because we want to go to the main page only after successfull authentication
             //rootFrame.Navigate(typeof(MainPage), e.Arguments);

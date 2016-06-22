@@ -84,6 +84,39 @@ namespace HockeyAppDemo81
             await HockeyClient.Current.LogoutFromFeedbackAsync();
         }
 
+        private void TrackMetric_Click(object sender, RoutedEventArgs e)
+        {
+            HockeyClient.Current.TrackMetric("HockeyAppDemo81.Windows.Metric1", 1.0);
+        }
+
+        private void TrackTrace_Click(object sender, RoutedEventArgs e)
+        {
+            HockeyClient.Current.TrackTrace("HockeyAppDemo81.Windows.TrackTrace_Click finished successfully");
+        }
+
+        private void TrackPageView_Click(object sender, RoutedEventArgs e)
+        {
+            HockeyClient.Current.TrackPageView("HockeyAppDemo81.Windows.MainPage");
+        }
+
+        private void TrackDependency_Click(object sender, RoutedEventArgs e)
+        {
+            HockeyClient.Current.TrackDependency("http://www.bing.com/HockeyAppDemo81.Windows", "HTTP", DateTimeOffset.Now, TimeSpan.FromSeconds(1), true);
+        }
+
+        private void TrackException_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                throw new Exception("HockeyAppDemo81.Windows.Test exception");
+            }
+            catch (Exception ex)
+            {
+                HockeyClient.Current.TrackException(ex);
+            }
+        }
+
+
         #endregion
 
         #region Standard template code
