@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "HockeySDK.UWP": "4.1.1-build17552",
+    "HockeySDK.UWP": "4.1.1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0"
   },
   "frameworks": {
