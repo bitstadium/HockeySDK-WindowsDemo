@@ -96,7 +96,7 @@ namespace HockeyAppDemo81
             //    );
 
             //following line commented out because we want to go to the main page only after successfull authentication
-            //rootFrame.Navigate(typeof(MainPage), e.Arguments);
+            rootFrame.Navigate(typeof(MainPage), e.Arguments);
             #endregion
 
 
@@ -106,7 +106,7 @@ namespace HockeyAppDemo81
 #if WINDOWS_PHONE_APP
             //initiates a call to the hockeyapp server (if network is available) and shows a dialog to the user if an update is available
             //should be called after SendCrashesAsync (if not auto-send) to avoid multiple dialogs!
-            await HockeyClient.Current.CheckForAppUpdateAsync();
+            // await HockeyClient.Current.CheckForAppUpdateAsync();
 #endif
             #endregion
 

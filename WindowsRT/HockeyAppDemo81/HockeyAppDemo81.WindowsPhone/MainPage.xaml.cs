@@ -40,6 +40,16 @@ namespace HockeyAppDemo81
 
         private void ExceptionButton_Click(object sender, RoutedEventArgs e)
         {
+            Method1();
+        }
+
+        private void Method1()
+        {
+            Method2();
+        }
+
+        private void Method2()
+        {
             logger.Error("Some imporant thing to log");
             throw new Exception("TestException from DemoApp");
         }

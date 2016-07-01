@@ -47,6 +47,16 @@ namespace HockeyAppDemo81
 
         private void ExceptionButton_Click(object sender, RoutedEventArgs e)
         {
+            Method1();
+        }
+
+        private void Method1()
+        {
+            Method2();
+        }
+
+        private void Method2()
+        {
             logger.Warn("Some logged information.");
             throw new Exception("TestException from DemoApp");
         }
@@ -115,7 +125,9 @@ namespace HockeyAppDemo81
             }
             catch (Exception ex)
             {
-                HockeyClient.Current.TrackException(ex);
+                var properties = new Dictionary<string, string>();
+                properties.Add("Description", "Log: 17:30:14: Addding custom description");
+                HockeyClient.Current.TrackException(ex, properties);
             }
         }
 
