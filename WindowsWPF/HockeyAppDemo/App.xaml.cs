@@ -27,7 +27,7 @@
 
             //optional should only used in debug builds. register an event-handler to get exceptions in HockeySDK code that are "swallowed" (like problems writing crashlogs etc.)
 #if DEBUG
-((HockeyClient)HockeyClient.Current).OnHockeySDKInternalException += (sender, args) =>
+            ((HockeyClient)HockeyClient.Current).OnHockeySDKInternalException += (sender, args) =>
             {
                 if (Debugger.IsAttached) { Debugger.Break(); }
             };
