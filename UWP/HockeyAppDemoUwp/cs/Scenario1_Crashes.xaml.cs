@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Controls;
 using Microsoft.HockeyApp;
 using System.Threading.Tasks;
 using System.Globalization;
+using Microsoft.HockeyApp.DataContracts;
 
 namespace HockeyAppDemo
 {
@@ -79,6 +80,14 @@ namespace HockeyAppDemo
         private void TrackPageViewButton_Click()
         {
             HockeyClient.Current.TrackPageView("Scenario1_Crashes");
+        }
+
+        private void TrackPageViewWithPropertiesButton_Click()
+        {
+            PageViewTelemetry pvt = new PageViewTelemetry();
+            pvt.Name = "Scenario1_Crashes_PageViewTelemetry";
+            pvt.Properties.Add("Property1", "Value1");
+            HockeyClient.Current.TrackPageView(pvt);
         }
 
         private void TrackExceptionButton_Click()

@@ -3,6 +3,6 @@
     public partial class DemoConstants
     {
         //TODO add your app id and secret here !
-        public static string YOUR_APP_ID = "8c0c3f9574894f84ac9535225b740b94";
+        public static string YOUR_APP_ID = "093403c29cbe4b87b647d6a2f3651285";
     }
 }
