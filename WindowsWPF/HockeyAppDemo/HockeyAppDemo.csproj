@@ -34,12 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.HockeyApp.Core45, Version=4.1.2.6673, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HockeySDK.WPF.4.1.2\lib\net45\Microsoft.HockeyApp.Core45.dll</HintPath>
+    <Reference Include="Microsoft.HockeyApp.Core45, Version=4.1.5.1043, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.WPF.4.1.5\lib\net45\Microsoft.HockeyApp.Core45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.HockeyApp.Kit, Version=4.1.2.6673, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HockeySDK.WPF.4.1.2\lib\net45\Microsoft.HockeyApp.Kit.dll</HintPath>
+    <Reference Include="Microsoft.HockeyApp.Kit, Version=4.1.5.1043, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.WPF.4.1.5\lib\net45\Microsoft.HockeyApp.Kit.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -75,7 +75,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HockeyApp.resx</DependentUpon>
     </Compile>
-    <Compile Include="IgnoreGit_DemoConstants.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -109,7 +109,6 @@
     <Compile Include="Identified.xaml.cs">
       <DependentUpon>Identified.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IgnoreGit_DemoConstants.cs" />
     <Compile Include="InMemoryLogTarget.cs" />
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -202,12 +201,12 @@
     <Reference Include="MetroLog.Platform">
       <HintPath>..\packages\MetroLog.0.8.6.1\lib\wp8\MetroLog.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.HockeyApp.Core45, Version=4.1.2.6673, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HockeySDK.WP.4.1.2\lib\wp8\Microsoft.HockeyApp.Core45.dll</HintPath>
+    <Reference Include="Microsoft.HockeyApp.Core45, Version=4.1.5.1043, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.WP.4.1.5\lib\wp8\Microsoft.HockeyApp.Core45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.HockeyApp.Kit, Version=4.1.2.6673, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\HockeySDK.WP.4.1.2\lib\wp8\Microsoft.HockeyApp.Kit.dll</HintPath>
+    <Reference Include="Microsoft.HockeyApp.Kit, Version=4.1.5.1043, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HockeySDK.WP.4.1.5\lib\wp8\Microsoft.HockeyApp.Kit.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.IO.Compression">
