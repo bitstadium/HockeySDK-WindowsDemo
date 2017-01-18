@@ -31,18 +31,31 @@ namespace HockeyAppDemo
         /// </summary>
         public App()
         {
-            HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID,
-                new TelemetryConfiguration() { EnableDiagnostics = true})
-                .SetContactInfo("DemoUser", "demoapp@hotmail.com")
-                .SetExceptionDescriptionLoader((Exception ex) =>
-                {
-                    return "Exception HResult: " + ex.HResult.ToString();
-                });
-
-            // Microsoft.HockeyApp.HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID);
-
+            // If you don't configure Hockey App in your App constructor, you need to configure it
+            // at all entry points to the application: Activated, Launched, and Resuming (in the
+            // case of a prelaunch, in which we deliberately don't configure Hockey App).
+            //
+            // The motivation behind not configuring HockeyApp in the App constructor is to avoid
+            // a session start during a prelaunch. If you do not care about this in your app, you
+            // may remove all calls to ConfigureHockeyApp and configure it in your App constructor.
+ 
+            this.Resuming += App_Resuming;
             this.InitializeComponent();
             this.Construct();
+        }
+
+        private void App_Resuming(object sender, object e)
+        {
+            // If an app is opened after being prelaunched, OnLaunched is not called and
+            // the Resuming event gets fired.
+            ConfigureHockeyApp();
+        }
+
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            // An application opened by means other than normal user interaction is "activated,"
+            // so Hockey App must be configured in this method
+            ConfigureHockeyApp();
         }
 
         /// <summary>
@@ -53,7 +66,12 @@ namespace HockeyAppDemo
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             BackgroundServices.MyBackgroundTask.Register();
-
+            if (!e.PrelaunchActivated)
+            {
+                ConfigureHockeyApp();
+                // Other Hockey App logic that needs to be in OnLaunched should go in here
+                // to ensure that the HockeyClient has been configured.
+            }
 #if DEBUG
             if (System.Diagnostics.Debugger.IsAttached)
             {
@@ -128,5 +146,18 @@ namespace HockeyAppDemo
 
         // Add any application contructor code in here.
         partial void Construct();
+
+        private void ConfigureHockeyApp()
+        {
+            // The actual Hockey App configuration goes in here
+            HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID,
+                new TelemetryConfiguration() { EnableDiagnostics = true })
+                .SetContactInfo("DemoUser", "demoapp@hotmail.com")
+                .SetExceptionDescriptionLoader((Exception ex) =>
+                {
+                    return "Exception HResult: " + ex.HResult.ToString();
+                });
+            // Microsoft.HockeyApp.HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID);
+        }
     }
 }

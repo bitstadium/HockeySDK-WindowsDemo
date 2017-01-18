@@ -116,6 +116,7 @@ ClientBin/
 *.dbmdl
 *.[Pp]ublish.xml
 *.publishsettings
+*/*/*/project.lock.json
 
 # RIA/Silverlight projects
 Generated_Code/
