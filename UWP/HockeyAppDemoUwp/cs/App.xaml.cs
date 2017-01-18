@@ -147,13 +147,9 @@ namespace HockeyAppDemo
         // Add any application contructor code in here.
         partial void Construct();
 
-        private bool HockeyAppConfigured = false;
         private void ConfigureHockeyApp()
         {
-            if (HockeyAppConfigured)
-            {
-                return;
-            }
+            // The actual Hockey App configuration goes in here
             HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID,
                 new TelemetryConfiguration() { EnableDiagnostics = true })
                 .SetContactInfo("DemoUser", "demoapp@hotmail.com")
@@ -162,7 +158,6 @@ namespace HockeyAppDemo
                     return "Exception HResult: " + ex.HResult.ToString();
                 });
             // Microsoft.HockeyApp.HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID);
-            HockeyAppConfigured = true;
         }
     }
 }
