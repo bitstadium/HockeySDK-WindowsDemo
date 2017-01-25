@@ -17,6 +17,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using Microsoft.HockeyApp;
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace HockeyAppDemo
@@ -36,7 +38,37 @@ namespace HockeyAppDemo
             // in order to call methods that are in this class.
             Current = this;
             SampleTitle.Text = FEATURE_NAME;
+
+            // Instead of starting HockeyApp in the App constructor, we can subscribe to the
+            // event below, which does not occur on prelaunch, but does occur when the user
+            // opens the application explicitly.
+            // Window.Current.VisibilityChanged += Current_VisibilityChanged;
         }
+
+        // To avoid configuring HockeyApp every single time the visibility changes, use a bool
+        // so that it can be configured only once. 
+        // private bool HockeyAppNeedsConfigure = true;
+
+        // This method should be uncommented to configure HockeyApp the first time the main page becomes
+
+        /*
+        private void Current_VisibilityChanged(object sender, Windows.UI.Core.VisibilityChangedEventArgs e)
+        {
+            if (HockeyAppNeedsConfigure)
+            {
+                HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID,
+                    new TelemetryConfiguration() { EnableDiagnostics = true })
+                    .SetContactInfo("DemoUser", "demoapp@hotmail.com")
+                    .SetExceptionDescriptionLoader((Exception ex) =>
+                    {
+                        return "Exception HResult: " + ex.HResult.ToString();
+                    });
+
+                // Microsoft.HockeyApp.HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID);
+                HockeyAppNeedsConfigure = false;
+            }
+        }
+        */
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

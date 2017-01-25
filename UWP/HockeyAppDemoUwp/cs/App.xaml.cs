@@ -31,6 +31,9 @@ namespace HockeyAppDemo
         /// </summary>
         public App()
         {
+            // Note: This configuration will start a session even when the UWP application is prelaunched
+            // by the operating system. If this behavior is undesirable, and you only want to start Hockey App
+            // when the user explicitly starts the application, see the commented code in MainPage.xaml.cs
             HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID,
                 new TelemetryConfiguration() { EnableDiagnostics = true})
                 .SetContactInfo("DemoUser", "demoapp@hotmail.com")
@@ -40,7 +43,7 @@ namespace HockeyAppDemo
                 });
 
             // Microsoft.HockeyApp.HockeyClient.Current.Configure(DemoConstants.YOUR_APP_ID);
-
+            
             this.InitializeComponent();
             this.Construct();
         }
